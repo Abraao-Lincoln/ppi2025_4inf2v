@@ -1,11 +1,14 @@
 import styles from "./MyGrid.module.css";
+import { Atom } from "lucide-react";
 
 export function MyGrid() {
   return (
     <div className={styles.container}>
-      <header className={styles.header1} />
-      <header className={styles.header2} />
-      <aside className={styles.aside} />
+      <header className={styles.header}>
+        <div className="styles.logo">
+          <Atom size={150} strokeWidth={3} />
+        </div>
+      </header>
       <main className={styles.main}>
         <div className={styles.grid}>
           <div className={styles.card}>
