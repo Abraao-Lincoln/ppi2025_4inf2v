@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
 .container {
   display: grid;
 
@@ -7,7 +9,11 @@
     "footer";
 
   grid-template-columns: auto;
-  grid-template-rows: 20rem auto 10rem;
+  grid-template-rows: 13rem auto 13rem;
+
+
+  background: linear-gradient(to bottom, #010518 0%, #1e3a8a 100%);
+
 
   /* @media (max-width: 1200px) {
     grid-template-areas:
@@ -21,24 +27,29 @@
 
 .header {
   grid-area: header;
-  background-color: darkslateblue;
-  align-items: center;
+
+  
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.footer {
-  grid-area: footer;
-  background-color: darkslategray;
+.headerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Agency FB', Arial, sans-serif;
+  padding: 2rem;
+  color: var(--primary-blue);
+  font-size: 5rem;
+  font-weight: bolder;
 }
 
 .logo {
-  padding: 3rem;
-  display: flex;
-  /* grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  grid-template-rows: repeat(auto-fit, min-content); */
-  /* gap: 3rem; */
-  justify-content: center;
-  align-content: center;
+  color: var(--primary-blue);
 }
 
 .grid {
@@ -53,13 +64,68 @@
   /* align-content: center; */
 }
 
-.card {
-  background-color: var(--primary-dark);
+.img {
+  width: 100%;
+  height: auto;
   border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.cardTitle {
+  font-family: 'Agency FB', Arial, sans-serif;
+  color: black;
+  font-weight: bold;
+  margin: 1.5rem;
+  text-align: center;
+}
+
+.cardText {
+  font-family: 'Agency FB', Arial, sans-serif;
   color: var(--primary-contrast-light);
-  padding: 1rem;
+  font-size: 2rem;
+  /* text-align: center; */
+  margin: 1.5rem;
+}
+
+.card {
+  background-color: var(--primary-blue);
+  border-radius: 2rem;
+  color: var(--primary-contrast-light);
+  padding: 2.5rem;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
   font-size: 3rem;
-  text-align: center;
-  height: 20rem;
+  height: auto;
+  width: 300px;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: var(--primary-contrast-light);
+  display: flex;
+  
+  justify-content: space-between;
+  align-items: center;
+}
+
+.information {
+  margin: 5rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+  font-family: 'Agency FB', Arial, sans-serif;
+}
+
+.prof {
+  color: var(--primary-blue);
+  font-size: 3rem;
+  font-family: 'Dancing Script', cursive;
+}
+
+.icons {
+  width: 15rem;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  margin: 5rem;
+  background-color: var(--primary-dark);
+  border-radius: 1.5rem;
 }
