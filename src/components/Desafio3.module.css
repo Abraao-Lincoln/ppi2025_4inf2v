@@ -1,0 +1,118 @@
+.container {
+  display: grid;
+
+  grid-template-areas:
+    "header1 header1 header1"
+    "aside1 header2 aside2"
+    "aside1 main aside2"
+    "aside1 footer1 aside2"
+    "footer2 footer2 aside2";
+  grid-template-columns: 15vw auto 15vw;
+  grid-template-rows: 10rem 5rem calc(100vh - 30rem) 5rem 10rem;
+}
+/* Tablet */
+@media (max-width: 1200px) {
+  .container {
+    grid-template-areas:
+      "header1 header1"
+      "aside1 header2"
+      "aside1 main"
+      "aside1 footer1"
+      "footer2 footer2";
+    grid-template-columns: 15vw auto;
+    grid-template-rows: 10rem 5rem calc(100vh - 30rem) 5rem 10rem;
+  }
+  .aside2 {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .container {
+    grid-template-areas:
+      "header2"
+      "main"
+      "footer1";
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem calc(100vh - 10rem) 5rem;
+  }
+  .header1,
+  .aside1,
+  .aside2,
+  .footer2 {
+    display: none;
+  }
+}
+
+.header1 {
+  grid-area: header1;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+.header2 {
+  grid-area: header2;
+  background-color: rgb(57, 83, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+.main {
+  grid-area: main;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+.aside1 {
+  grid-area: aside1;
+  background-color: yellow;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+.aside2 {
+  grid-area: aside2;
+  background-color: yellow;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+.footer1 {
+  grid-area: footer1;
+  background-color: darkgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+.footer2 {
+  grid-area: footer2;
+  background-color: salmon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}

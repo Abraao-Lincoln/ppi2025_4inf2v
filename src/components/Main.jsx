@@ -1,6 +1,6 @@
 import styles from "./Main.module.css";
 
-export default function Main() {
+export function Main() {
   const cards = Array.from({ length: 6 }, (_, idx) => ({
     title: `My Text ${idx}`,
     img: `https://picsum.photos/250/250?random=${
