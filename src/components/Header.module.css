@@ -1,69 +1,39 @@
-.container {
-  display: grid;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
-  grid-template-areas:
-    "header1 header1"
-    "aside header2"
-    "aside main"
-    "footer footer";
+.header {
+  grid-area: header;
 
-  grid-template-columns: 30rem auto;
-  grid-template-rows: 10rem 5rem calc(100vh - 15rem) 10rem;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  @media (max-width: 1200px) {
-    grid-template-areas:
-      "header1"
-      "header2"
-      "main"
-      "footer";
+.headerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    grid-template-columns: 1fr;
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 }
 
-.header1 {
-  grid-area: header1;
-  background-color: darkslateblue;
-}
+.title {
+  font-family: 'Agency FB', Arial, sans-serif;
+  padding: 2rem;
+  color: var(--primary-blue);
+  font-size: 5rem;
+  font-weight: bolder;
 
-.header2 {
-  grid-area: header2;
-  background-color: deeppink;
-}
-
-.aside {
-  grid-area: aside;
-  background-color: darkseagreen;
-
-  @media (max-width: 1200px) {
-    display: none;
+  @media (max-width: 768px) {
+    font-size: 3rem;
   }
 }
 
-.footer {
-  grid-area: footer;
-  background-color: darkslategray;
-}
-
-.grid {
-  /* height: 100vh; */
-  padding: 3rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  grid-template-rows: repeat(auto-fit, min-content);
-  gap: 3rem;
-
-  /* justify-content: center; */
-  /* align-content: center; */
-}
-
-.card {
-  background-color: var(--primary-dark);
-  border-radius: 1rem;
-  color: var(--primary-contrast-light);
-  padding: 1rem;
-  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
-  font-size: 3rem;
-  text-align: center;
-  height: 20rem;
+.logo {
+  color: var(--primary-blue);
+  
 }

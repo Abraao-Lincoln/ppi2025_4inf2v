@@ -1,36 +1,13 @@
-import {styles} from "./Header.module.css";
+import styles from "./Header.module.css";
+import { Atom } from "lucide-react";
 
 export function Header() {
   return (
-    <div className={styles.container}>
-      <header className={styles.header1} />
-      <header className={styles.header2} />
-      <aside className={styles.aside} />
-      <main className={styles.main}>
-        <div className={styles.grid}>
-          <div className={styles.card}>
-            <h2>Card 1</h2>
-            <p>This is the first card.</p>
-          </div>
-          <div className={styles.card}>
-            <h2>Card 2</h2>
-            <p>This is the second card.</p>
-          </div>
-          <div className={styles.card}>
-            <h2>Card 3</h2>
-            <p>This is the third card.</p>
-          </div>
-          <div className={styles.card}>
-            <h2>Card 4</h2>
-            <p>This is the fourth card.</p>
-          </div>
-          <div className={styles.card}>
-            <h2>Card 5</h2>
-            <p>This is the fifth card.</p>
-          </div>
+      <header className={styles.header}>
+        <div className={styles.headerContent}>
+          <Atom size={90} strokeWidth={2} className={styles.logo} />
+          <h1 className={styles.title}>Foco, Força e Fé</h1>
         </div>
-      </main>
-      <footer className={styles.footer} />
-    </div>
+      </header>
   );
 }

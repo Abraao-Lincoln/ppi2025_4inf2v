@@ -1,0 +1,52 @@
+.grid {
+  /* height: 100vh; */
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-rows: repeat(auto-fit, min-content);
+  gap: 3rem;
+  justify-content: center;
+
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.cardTitle {
+  font-family: "Agency FB", Arial, sans-serif;
+  color: black;
+  font-weight: bold;
+  margin: 1.5rem;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
+}
+
+.cardText {
+  font-family: "Agency FB", Arial, sans-serif;
+  color: var(--primary-contrast-light);
+  font-size: 2rem;
+  /* text-align: center; */
+  margin: 1.5rem;
+}
+
+.card {
+  background-color: var(--primary-blue);
+  border-radius: 2rem;
+  color: var(--primary-contrast-light);
+  padding: 2.5rem;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  font-size: 3rem;
+  height: auto;
+  width: 300px;
+
+  @media (max-width: 768px) {
+    width: auto;
+  }
+}
