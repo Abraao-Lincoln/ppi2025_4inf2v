@@ -1,0 +1,34 @@
+.container {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 2rem;
+  height: 100vh;
+  background-color: var(--primary);
+  font-size: 3rem;
+}
+
+.title {
+  font-size: 4rem;
+  color: var(--primary-contrast-light);
+  text-align: center;
+}
+
+.button {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background-color: var(--primary-light);
+  color: var(--primary-contrast-dark);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  transform: scale(1.05);
+}
