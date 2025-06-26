@@ -10,10 +10,19 @@
   font-size: 3rem;
 }
 
-.title {
-  font-size: 4rem;
+.array {
+  background-color: var(--primary-blue);
+  margin: 3rem;
+  padding: 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   color: var(--primary-contrast-light);
+  font-weight: bold;
+  font-size: 4rem;
   text-align: center;
+  transition: transform 0.3s ease;
+  width: auto;
+  min-width: 50rem;
 }
 
 .button {
@@ -31,4 +40,12 @@
   background-color: var(--primary-dark);
   color: var(--primary-light);
   transform: scale(1.04);
+}
+
+.sortedNumbers {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }
