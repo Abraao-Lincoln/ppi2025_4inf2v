@@ -2,9 +2,13 @@
   --primary: #2088bd;
   --primary-light: #9ccbe0;
   --primary-dark: #144964;
-  --primary-blue: #004cff;
   --primary-contrast-light: #ffffff;
   --primary-contrast-dark: #000000;
+  --primary-blue: #004f92;
+  --secondary-blue: #003777;
+  --primary-light-blue: #187bcd;
+  --primary-dark-blue: #152238;
+  --secondary-dark-blue: #23395d;
 
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
