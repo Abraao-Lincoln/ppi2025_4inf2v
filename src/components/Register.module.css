@@ -4,25 +4,49 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: var(--gray-900);
+  box-sizing: border-box;
 }
+
 .title {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: var(--primary);
+  text-align: center;
 }
+
 .form {
   display: flex;
   flex-direction: column;
   width: 300px;
+  color: var(--gray-200);
 }
+
 .label {
   margin-bottom: 0.5rem;
+  color: var(--gray-400);
+  font-weight: 600;
 }
+
 .input {
   padding: 0.5rem;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--gray-400);
   border-radius: 4px;
+  background: var(--gray-900);
+  color: var(--gray-200);
+  outline: none;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.12s;
+  box-sizing: border-box;
 }
+
+.input:focus {
+  border-color: var(--primary);
+  background: var(--gray-800);
+  box-shadow: 0 0 0 4px rgba(30,111,184,0.06); /* leve halo usando --primary (RGB aproximado) */
+  color: var(--gray-200);
+}
+
 .register {
   background-color: var(--primary);
   color: #fff;
@@ -30,8 +54,11 @@
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.12s;
+  font-weight: 700;
 }
+
 .register:hover {
   background-color: var(--secondary-blue);
+  transform: translateY(-1px);
 }

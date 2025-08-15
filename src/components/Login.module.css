@@ -1,54 +1,78 @@
 .loginContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: #f5f6fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--gray-900);
+  box-sizing: border-box;
 }
 
 .loginForm {
-    background: #fff;
-    padding: 2rem 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    width: 100%;
-    max-width: 350px;
+ display: flex;
+  flex-direction: column;
+  width: 300px;
+  color: var(--gray-200);
 }
 
 .input {
-    padding: 0.75rem 1rem;
-    border: 1px solid #dcdde1;
-    border-radius: 4px;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.2s;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--gray-400);
+  border-radius: 4px;
+  background: var(--gray-900);
+  color: var(--gray-200);
+  outline: none;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.12s;
+  box-sizing: border-box;
 }
 
 .input:focus {
-    border-color: #4078c0;
+  border-color: var(--primary);
+  background: var(--gray-800);
+  box-shadow: 0 0 0 4px rgba(30, 111, 184, 0.06); /* leve halo usando --primary (RGB aproximado) */
+  color: var(--gray-200);
 }
 
 .submitButton {
-    background: #4078c0;
-    color: #fff;
-    border: none;
-    padding: 0.75rem 1rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .submitButton:hover {
-    background: #305a8c;
+  background: var(--secondary-blue);
+  color: var(--primary);
+  transform: scale(1.05);
+}
+
+.loginTitle {
+  color: var(--primary);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.label {
+  color: var(--gray-400);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .errorMessage {
-    color: #e84118;
-    font-size: 0.95rem;
-    text-align: center;
+  color: rgb(200, 35, 51);
+  font-size: 0.95rem;
+  text-align: center;
+  background: var(--primary-dark-blue);
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
 }

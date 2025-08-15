@@ -8,7 +8,6 @@ export function Login() {
   function handleLogin(e) {
     if (userData.username === e.target.username.value &&
         userData.password === e.target.password.value) { 
-      alert("Login successful!");
           navigate("/"); // Redirect to home page after login
     } else {
       alert("Invalid username or password.");
