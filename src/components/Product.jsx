@@ -23,6 +23,7 @@ export function Product({ product }) {
         className={styles.productButton}
         onClick={() => {
           addToCart(product);
+          alert(`${product.title} added to cart!`);
         }}
       >
         ADD TO CART

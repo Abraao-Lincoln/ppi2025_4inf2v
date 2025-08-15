@@ -34,6 +34,7 @@ export function Cart() {
                     onClick={() => {
                       for (let i = 0; i < product.qty; i++) {
                         removeFromCart(product);
+                        alert(`${product.title} removed from cart!`);
                       }
                     }}
                   >

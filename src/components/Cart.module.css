@@ -92,6 +92,7 @@
 .empty {
   text-align: center;
   grid-area: title;
+  padding-top: 5rem;
 }
 
 .checkoutList {

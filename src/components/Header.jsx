@@ -7,21 +7,27 @@ import { CartContext } from "../service/CartContext";
 export function Header() {
   const { cart, uniqueProducts } = useContext(CartContext);
   const [showPopup, setShowPopup] = useState(false);
-  const username = "user";
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const name = userData.name;
+  const username = userData.username;
 
   return (
-    <header className={styles.header1}>
+    <header className={styles.header}>
       <div
         className={styles.login}
         onMouseEnter={() => setShowPopup(true)}
         onMouseLeave={() => setShowPopup(false)}
         style={{ position: "relative" }}
       >
-        <CircleUserRound />
+        <CircleUserRound size={50} color="var(--primary)" />
+        {name}
 
         {showPopup && (
           <div className={styles.userPopup}>
-            <p>{username || "Usuário"}</p>
+            <div className={styles.userInfo}>
+            <CircleUserRound  />
+              <p>{username || "Usuário"}</p>
+            </div>
             <Link to="/login">
               <button>Sair</button>
             </Link>
@@ -35,11 +41,12 @@ export function Header() {
       </div>
 
       <div className={styles.cart}>
-        <div className={styles.cartIcon}>
-          <Link to="/cart">
-            <ShoppingCart />
-          </Link>
-          {cart.length === 0 ? <h5 className="qtd"></h5> : <p>{cart.length}</p>}
+        <Link to="/cart">
+          <ShoppingCart className={styles.cartIcon} />
+        </Link>
+        {cart.length > 0 && <p>{cart.length}</p>}
+
+        {cart.length > 0 && (
           <h5>
             {uniqueProducts
               .reduce(
@@ -48,7 +55,7 @@ export function Header() {
               )
               .toFixed(2)}
           </h5>
-        </div>
+        )}
       </div>
     </header>
   );
