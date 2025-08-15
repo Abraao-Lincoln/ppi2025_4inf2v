@@ -98,3 +98,49 @@
 .checkoutList {
   padding-left: 3rem;
 }
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000;
+}
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  background-color: var(--gray-900);
+  padding: 2rem;
+  border-radius: 2rem;
+  position: relative;
+  min-width: 250px;
+  max-width: 90vw;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+}
+.close {
+  position: absolute;
+  top: 0rem; 
+  right: 11px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.confirmButton {
+  background-color: rgb(200, 35, 51) !important;
+  color: white !important;
+  font-weight: bolder !important;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  border: none;
+  padding: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.confirmButton:hover {
+  background-color: rgb(150, 25, 41) !important;
+}

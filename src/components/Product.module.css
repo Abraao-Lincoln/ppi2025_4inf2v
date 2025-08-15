@@ -66,3 +66,57 @@
 .productQty button:hover {
   background-color: rgb(17, 59, 151);
 }
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000;
+}
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  background-color: var(--gray-900);
+  padding: 2rem;
+  border-radius: 2rem;
+  position: relative;
+  min-width: 250px;
+  max-width: 90vw;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  color: var(--gray-400);
+}
+
+.modalContent h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--gray-400);
+}
+
+.modalContent p {
+  font-size: 2rem;
+  color: var(--gray-300);
+}
+
+.confirmButton {
+  background-color: var(--gray-700) !important;
+  color: white !important;
+  font-weight: bolder !important;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  border: none;
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.confirmButton:hover {
+  background-color: var(--gray-500) !important;
+  scale: 1.05;
+}

@@ -25,11 +25,11 @@ export function Header() {
         {showPopup && (
           <div className={styles.userPopup}>
             <div className={styles.userInfo}>
-            <CircleUserRound  />
+              <CircleUserRound size={18} />
               <p>{username || "Usuário"}</p>
             </div>
             <Link to="/login">
-              <button>Sair</button>
+              <button className={styles.confirmButton}>Sair</button>
             </Link>
           </div>
         )}

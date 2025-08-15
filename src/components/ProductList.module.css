@@ -94,6 +94,13 @@
     text-align: center;
 }
 
+.search input:focus {
+    outline: none;
+    border-color: rgb(37, 100, 234);
+    box-shadow: 0 0 5px rgba(37, 100, 234, 0.5);
+    background-color: var(--secondary-dark-blue);
+}
+
 .search button {
     background-color: rgb(17, 31, 80);
     border: 1px solid rgb(32, 59, 156);
