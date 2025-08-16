@@ -37,7 +37,7 @@ export function Cart() {
             {uniqueProducts.map((product) => (
               <li key={product.id}>
                 <div className={styles.cartItem}>
-                  <img src={product.thumbnail} alt={product.title} />
+                  <img src={product.thumbnail} alt={product.title} className={styles.thumbnail}/>
                   <h3>{product.title}</h3>
                   <button
                     onClick={() => removeFromCart(product)}

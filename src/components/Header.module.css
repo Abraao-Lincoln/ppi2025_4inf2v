@@ -191,7 +191,7 @@
 /* Responsividade */
 @media (max-width: 768px) {
   .header {
-    flex-direction: column;
+    flex-direction: row;
     height: auto;
     padding: 2rem 1rem;
   }
@@ -201,8 +201,8 @@
     padding: 0.5rem;
   }
   .header svg {
-    width: 8rem;
-    height: 8rem;
+    width: 4rem;
+    height: 4rem;
     font-size: 8rem;
   }
   .cart {
