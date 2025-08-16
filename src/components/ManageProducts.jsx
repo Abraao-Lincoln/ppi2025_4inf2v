@@ -14,16 +14,18 @@ export function ManageProducts() {
   });
 
   const [editingProduct, setEditingProduct] = useState(null);
-  const [status, setStatus] = useState({ type: "", message: "" }); // {type: 'success'|'error', message: ''}
+  const [status, setStatus] = useState({ type: "", message: "" });
 
-  // Reseta a mensagem após X segundos
+  // Modal state para remoção
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
+
   useEffect(() => {
     if (!status.message) return;
     const t = setTimeout(() => setStatus({ type: "", message: "" }), 3500);
     return () => clearTimeout(t);
   }, [status]);
 
-  // quando products muda (por exemplo ao carregar), limpa o formulário
   useEffect(() => {
     if (!editingProduct) {
       setForm({ title: "", description: "", price: "", thumbnail: "" });
@@ -68,7 +70,6 @@ export function ManageProducts() {
       price: product.price != null ? String(product.price) : "",
       thumbnail: product.thumbnail || "",
     });
-    // move focus? você pode adicionar refs se quiser
   }
 
   function handleUpdateProduct(e) {
@@ -84,30 +85,41 @@ export function ManageProducts() {
       thumbnail: form.thumbnail.trim() || editingProduct.thumbnail,
     };
 
-    setProducts(
-      (products || []).map((p) => (p.id === editingProduct.id ? updated : p))
-    );
+    setProducts((products || []).map((p) => (p.id === editingProduct.id ? updated : p)));
 
     setEditingProduct(null);
     setForm({ title: "", description: "", price: "", thumbnail: "" });
     setStatus({ type: "success", message: "Produto atualizado com sucesso." });
   }
 
-  function handleRemoveProduct(id) {
+  // Abre modal de confirmação
+  function promptRemoveProduct(id) {
     const prod = (products || []).find((p) => p.id === id);
-    const confirmed = window.confirm(
-      `Remover "${prod?.title || "produto"}" do catálogo? Essa ação não pode ser desfeita.`
-    );
-    if (!confirmed) return;
+    setProductToDelete(prod || null);
+    setShowDeleteModal(true);
+  }
 
-    setProducts((products || []).filter((p) => p.id !== id));
+  // Confirma remoção via modal
+  function confirmRemove() {
+    if (!productToDelete) {
+      setShowDeleteModal(false);
+      return;
+    }
+    setProducts((products || []).filter((p) => p.id !== productToDelete.id));
     setStatus({ type: "success", message: "Produto removido." });
 
-    // se estivermos editando o produto removido, cancelar edição
-    if (editingProduct && editingProduct.id === id) {
+    if (editingProduct && editingProduct.id === productToDelete.id) {
       setEditingProduct(null);
       setForm({ title: "", description: "", price: "", thumbnail: "" });
     }
+
+    setProductToDelete(null);
+    setShowDeleteModal(false);
+  }
+
+  function cancelRemove() {
+    setProductToDelete(null);
+    setShowDeleteModal(false);
   }
 
   function handleCancelEdit() {
@@ -119,7 +131,6 @@ export function ManageProducts() {
     <div className={styles.manageContainer}>
       <h1 className={styles.manageTitle}>Manage Products</h1>
 
-      {/* Feedback message */}
       {status.message && (
         <div
           className={styles.statusMessage}
@@ -217,7 +228,7 @@ export function ManageProducts() {
                 Edit
               </button>
               <button
-                onClick={() => handleRemoveProduct(product.id)}
+                onClick={() => promptRemoveProduct(product.id)}
                 className={styles.removeButton}
                 title={`Remove ${product.title}`}
               >
@@ -227,6 +238,47 @@ export function ManageProducts() {
           </div>
         ))}
       </div>
+
+      {/* Delete confirmation modal */}
+      {showDeleteModal && productToDelete && (
+        <div
+          className={styles.modalOverlay}
+          onClick={cancelRemove}
+        >
+          <div
+            className={styles.deleteModalContent}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="delete-modal-title"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 id="delete-modal-title" style={{ margin: 0, color: "rgb(200,35,51)" }}>
+              Confirm removal
+            </h2>
+            <p style={{ marginTop: "0.75rem" }}>
+              Deseja remover <strong>{productToDelete.title}</strong> do catálogo? Essa ação não pode ser desfeita.
+            </p>
+
+            <div style={{ display: "flex", gap: "0.5rem", marginTop: "1rem", justifyContent: "flex-end" }}>
+              <button
+                onClick={cancelRemove}
+                className={styles.cancelButton}
+                type="button"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmRemove}
+                className={styles.confirmButton}
+                type="button"
+                autoFocus
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
