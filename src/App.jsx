@@ -7,6 +7,7 @@ import { Cart } from "./components/Cart";
 import { ProductList } from "./components/ProductList";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
+import { ManageProducts } from "./components/ManageProducts";
 
 export default function App() {
   const location = useLocation();
@@ -17,6 +18,7 @@ export default function App() {
     <CartProvider>
       {location.pathname !== "/login" && location.pathname !== "/register" && <Header />}
       <Routes>
+        <Route path="/manage-products" element={<ManageProducts />} />
         <Route path="/" element={<ProductList/>}/>
         <Route path="/cart" element={<Cart/>} />
         <Route path="/login" element={<Login />} />

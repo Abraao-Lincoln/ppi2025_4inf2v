@@ -28,6 +28,9 @@ export function Header() {
               <CircleUserRound size={18} />
               <p>{username || "Usuário"}</p>
             </div>
+            <Link to="/manage-products">
+              <button>Gerenciar Produtos</button>
+            </Link>
             <Link to="/login">
               <button className={styles.confirmButton}>Sair</button>
             </Link>

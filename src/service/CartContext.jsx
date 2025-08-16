@@ -80,6 +80,7 @@ const productMap = {};
     cart: cart,
     loading: loading,
     error: error,
+    setProducts: setProducts,
     addToCart: addToCart,
     updateQty: updateQty,
     clearCart: clearCart,

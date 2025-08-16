@@ -1,0 +1,236 @@
+/* ManageProducts.module.css */
+
+/* Container principal */
+.manageContainer {
+  background: var(--gray-900);
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Título da página */
+.manageTitle {
+  text-align: center;
+  font-size: 3rem;
+  color: rgb(37, 100, 234); /* destaque azul */
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+/* Formulário de adicionar / editar produto */
+.productForm {
+  max-width: 920px;
+  margin: 0 auto 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 160px 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: rgba(15, 21, 33, 0.95);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* Inputs (reutiliza padrão similar ao search) */
+.input {
+  background-color: rgb(17, 31, 80);
+  border: 1px solid rgb(32, 59, 156);
+  color: rgb(37, 100, 234);
+  font-size: 1.4rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* foco do input */
+.input:focus {
+  border-color: rgb(37, 100, 234);
+  box-shadow: 0 0 8px rgba(37, 100, 234, 0.18);
+  background-color: var(--gray-800);
+}
+
+/* Botão de envio (Add / Update) */
+.submitButton {
+  background-color: rgb(37, 100, 234);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+/* alinhamento do botão quando em grid */
+.productForm .submitButton {
+  justify-self: start;
+  align-self: center;
+}
+
+/* hover do submit */
+.submitButton:hover {
+  background-color: rgb(32, 59, 156);
+  transform: translateY(-3px);
+}
+
+/* Lista de produtos gerenciáveis */
+.productList {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Cada item / card da lista */
+.productItem {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: rgba(15, 21, 33, 1);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  width: 100%;
+  max-width: 520px;
+  box-sizing: border-box;
+}
+
+/* Mini thumbnail */
+.thumbnail {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: #0b1220;
+  flex-shrink: 0;
+}
+
+/* Informação do produto (texto) */
+.productInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.productTitle {
+  font-size: 1.6rem;
+  margin: 0 0 0.25rem 0;
+  color: rgb(37, 100, 234);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.productDescription {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  color: rgba(255,255,255,0.8);
+  max-height: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.productPrice {
+  font-size: 1.25rem;
+  color: rgb(37, 100, 234);
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Ações (edit / remove) */
+.productActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: stretch;
+  justify-content: center;
+}
+
+/* Botões pequenos */
+.editButton,
+.removeButton {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform 0.12s ease, background-color 0.16s ease;
+}
+
+/* Edit (usa o azul de destaque) */
+.editButton {
+  background-color: rgb(37, 100, 234);
+  color: #fff;
+}
+
+.editButton:hover {
+  background-color: rgb(32, 59, 156);
+  transform: translateY(-2px);
+}
+
+/* Remove (tom de aviso / contraste) */
+.removeButton {
+  background-color: rgba(200, 35, 51, 0.95); /* mantém o erro já usado no projeto */
+  color: #fff;
+}
+
+.removeButton:hover {
+  background-color: rgb(170, 28, 40);
+  transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .productForm {
+    grid-template-columns: 1fr;
+  }
+
+  .productItem {
+    flex-direction: row;
+    width: calc(100% - 2rem);
+  }
+
+  .thumbnail {
+    width: 100px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 520px) {
+  .manageTitle {
+    font-size: 2.2rem;
+  }
+
+  .productItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .productActions {
+    flex-direction: row;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: 160px;
+    border-radius: 6px;
+  }
+
+  .productForm {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+}
