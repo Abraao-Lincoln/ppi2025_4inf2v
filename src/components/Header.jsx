@@ -7,9 +7,11 @@ import { CartContext } from "../service/CartContext";
 export function Header() {
   const { cart, uniqueProducts } = useContext(CartContext);
   const [showPopup, setShowPopup] = useState(false);
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  const name = userData.name;
-  const username = userData.username;
+  // const userData = JSON.parse(localStorage.getItem("userData"));
+  // const name = userData.name;
+  // const username = userData.username;
+  const name = "name";
+  const username = "username";
 
   return (
     <header className={styles.header}>

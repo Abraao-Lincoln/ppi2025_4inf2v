@@ -18,11 +18,12 @@ export default function App() {
     <CartProvider>
       {location.pathname !== "/login" && location.pathname !== "/register" && <Header />}
       <Routes>
+        <Route path="/register" element={<Register />} />
         <Route path="/manage-products" element={<ManageProducts />} />
         <Route path="/" element={<ProductList/>}/>
         <Route path="/cart" element={<Cart/>} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        
       </Routes>
     </CartProvider>
     </>
