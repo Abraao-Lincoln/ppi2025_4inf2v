@@ -16,14 +16,15 @@ export default function App() {
 
     <>
     <CartProvider>
-      {location.pathname !== "/login" && location.pathname !== "/register" && <Header />}
+      {location.pathname !== "/signin" && location.pathname !== "/signup" && <Header />}
       <Routes>
-        <Route path="/register" element={<Register />} />
+        
         <Route path="/manage-products" element={<ManageProducts />} />
         <Route path="/" element={<ProductList/>}/>
         <Route path="/cart" element={<Cart/>} />
-        <Route path="/login" element={<Login />} />
-        
+        <Route path="/signin" element={<Login />} />
+        <Route path="/signup" element={<Register />} />
+
       </Routes>
     </CartProvider>
     </>

@@ -5,15 +5,14 @@ export function Login() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const navigate = useNavigate();
 
-  function handleLogin(e) {
-    if (userData.username === e.target.username.value &&
-        userData.password === e.target.password.value) { 
-          navigate("/"); // Redirect to home page after login
-    } else {
-      alert("Invalid username or password.");
-    }
+  
 
-  }
+
+// https://fkhadra.github.io/react-toastify/introduction
+// https://base-ui.com/react/overview/quick-start
+
+
+
 
   return (
     <div className={styles.loginContainer}>

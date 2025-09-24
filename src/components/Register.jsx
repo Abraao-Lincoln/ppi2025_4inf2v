@@ -18,10 +18,10 @@ export function Register() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // Save user data to localStorage
-    localStorage.setItem("userData", JSON.stringify(formData));
-    alert("Registration successful!");
-    navigate("/login"); // Redirect to login page after registration
+    // Here you would typically handle form submission, e.g., send data to backend
+    console.log("Form Data Submitted: ", formData);
+    // For now, just navigate to login page after "registration"
+    navigate("/signin");
   }
 
   return (

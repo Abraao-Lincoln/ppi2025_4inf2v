@@ -6,11 +6,19 @@ export const CartContext = createContext({
   cart: [],
   loading: false,
   error: null,
+  // Cart Management
   addToCart: () => {},
   updateQty: () => {},
   clearCart: () => {},
-  removeFromCart: () => {},
-  uniqueProducts: [],
+
+  // User Session Management
+  session: null,
+  sessionLoading: false,
+  sessionMessage: null,
+  sessionError: null,
+  handleSignUp: () => {},
+  handleSignIn: () => {},
+  handleSignOut: () => {},
 });
 
 export function CartProvider({ children }) {
@@ -24,7 +32,7 @@ export function CartProvider({ children }) {
 
   useEffect(() => {
     async function fetchProductsSupabase() {
-      const {data, error} = await supabase.from('products').select();
+      const { data, error } = await supabase.from("products").select();
       if (error) {
         setError(error);
       } else {
@@ -33,8 +41,7 @@ export function CartProvider({ children }) {
       setLoading(false);
     }
     fetchProductsSupabase();
-    
-    
+
     // async function fetchProducts() {
     //   try {
     //     const response = await fetch(apiUrl);
@@ -64,16 +71,16 @@ export function CartProvider({ children }) {
       );
     });
   };
-   const removeFromCart = (product) => {
+  const removeFromCart = (product) => {
     setCart((prevCart) => {
-    const index = prevCart.findIndex((item) => item.id === product.id);
-    if (index === -1) return prevCart;
-    const newCart = [...prevCart];
-    newCart.splice(index, 1);
-    return newCart;
-  });
-};
-const productMap = {};
+      const index = prevCart.findIndex((item) => item.id === product.id);
+      if (index === -1) return prevCart;
+      const newCart = [...prevCart];
+      newCart.splice(index, 1);
+      return newCart;
+    });
+  };
+  const productMap = {};
   cart.forEach((product) => {
     if (productMap[product.id]) {
       productMap[product.id].qty += 1;
@@ -88,7 +95,89 @@ const productMap = {};
     setCart([]);
   };
 
+  // User Session Management
+  const [session, setSession] = useState(null);
+  const [sessionLoading, setSessionLoading] = useState(false);
+  const [sessionMessage, setSessionMessage] = useState(null);
+  const [sessionError, setSessionError] = useState(null);
+
+  async function handleSignUp(email, password, username) {
+    setSessionLoading(true);
+    setSessionMessage(null);
+    setSessionError(null);
+
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            username: username,
+            admin: false,
+          },
+          emailRedirectTo: `${window.location.origin}/signin`,
+        },
+      });
+
+      if (error) throw error;
+
+      if (data?.user) {
+        setSessionMessage(
+          "Registration successful! Please check your email to confirm your account."
+        );
+      }
+    } catch (error) {
+      setSessionError(error.message);
+    } finally {
+      setSessionLoading(false);
+    }
+  }
+
+  async function handleSignIn(email, password) {
+    setSessionLoading(true);
+    setSessionMessage(null);
+    setSessionError(null);
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) throw error;
+
+      if (data.session) {
+        setSession(data.session);
+        setSessionMessage("Sign-in successful!");
+      }
+    } catch (error) {
+      setSessionError(error.message);
+    } finally {
+      setSessionLoading(false);
+    }
+  }
+
+  async function handleSignOut() {
+    setSessionLoading(true);
+    setSessionMessage(null);
+    setSessionError(null);
+
+    try {
+      const { error } = await supabase.auth.signOut();
+
+      if (error) throw error;
+
+      setSession(null);
+      window.location.href = "/";
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setSessionLoading(false);
+    }
+  }
+
   const context = {
+    // Cart Management
     products: products,
     cart: cart,
     loading: loading,
@@ -97,13 +186,18 @@ const productMap = {};
     addToCart: addToCart,
     updateQty: updateQty,
     clearCart: clearCart,
-    removeFromCart: removeFromCart,
-    uniqueProducts: uniqueProducts,
+
+    // User Session Management
+    session: session,
+    sessionLoading: sessionLoading,
+    sessionMessage: sessionMessage,
+    sessionError: sessionError,
+    handleSignUp: handleSignUp,
+    handleSignIn: handleSignIn,
+    handleSignOut: handleSignOut,
   };
 
   return (
-    <CartContext.Provider value={context}>
-        {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={context}>{children}</CartContext.Provider>
   );
 }
