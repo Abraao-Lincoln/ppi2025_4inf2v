@@ -186,6 +186,7 @@ export function CartProvider({ children }) {
     addToCart: addToCart,
     updateQty: updateQty,
     clearCart: clearCart,
+    uniqueProducts: uniqueProducts,
 
     // User Session Management
     session: session,

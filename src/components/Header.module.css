@@ -1,248 +1,124 @@
-/* Layout principal do header */
 .header {
-  grid-area: header;
-  position: fixed;
-  top: 0;
-  left: 0;
+  height: 10rem;
   width: 100%;
-  height: 13rem;
-  background-color: var(--primary-dark-blue);
-  color: white;
-  padding: 3rem;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  
+  background-color: var(--primary-light);
 }
 
-/* Camada diagonal decorativa */
-.header::after {
+.username {
+  position: absolute;
+  top: 4rem;
+  left: 5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--primary-dark);
+}
+
+.username::after {
   content: "";
   position: absolute;
-  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100px;
-  background-color: var(--secondary-dark-blue);
-  clip-path: polygon(0 0, 120% 70%, 0 100%);
-  z-index: -1;
+  bottom: 0;
+  height: 1px;
+  width: 0;
+  background: var(--primary-dark);
+  transition: width 0.3s ease;
 }
 
-/* Barra reta decorativa */
-.header::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.username:hover::after {
   width: 100%;
-  height: 30px;
-  background-color: var(--secondary-dark-blue);
-  z-index: -1;
 }
 
-/* Título da loja */
 .title {
-  position: relative;
-  display: inline-block;
+  position: absolute;
+  top: 3rem;
+  left: 45%;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-dark);
   text-decoration: none;
-  color: var(--primary);
-  font-size: 4rem;
-  font-weight: bolder;
-  /* padding-bottom: 4px; */
-  outline: none;
 }
 
 .title::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0px;
-  height: 4px;
-  background: var(--primary);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 180ms ease;
+  left: 50%;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--primary-dark);
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translateX(-50%);
 }
 
-.title:hover::after,
-.title:focus-visible::after {
-  transform: scaleX(1);
+.title:hover::after {
+  width: 100%;
+  left: 50%;
 }
 
-/* Carrinho */
+.loginArea {
+  position: absolute;
+  top: 4rem;
+  right: 40rem;
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loginArea a {
+  text-decoration: none;
+  color: var(--primary-dark);
+  font-weight: 500;
+}
+
+.loginArea a:hover {
+  transition: linear 0.1s;
+  transform: scale(1.1);
+}
+
+.Separator {
+  height: 1.5rem;
+  border-left: 1px solid var(--primary-dark);
+}
+
+.themeToggle {
+  position: absolute;
+  top: 3.2rem;
+  right: 20rem;
+}
+
+.themeToggle:hover {
+  transition: linear 0.1s;
+  transform: scale(1.1);
+}
+
 .cart {
-  display: flex;
-  position: relative;
-  display: inline-block;
-  flex-direction: column;
-  font-weight: bolder;
-  font-size: 3rem;
-  padding: 1rem;
-  color: var(--primary);
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
 }
-.cartIcon {
-  width: 50px;
-  height: 50px;
-  color: var(--primary);
-}
-.cart button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: rgb(37, 100, 234);
-  font-size: 3rem;
-}
+
 .cart:hover {
-  color: rgba(255, 255, 255, 0.8);
-  transform: scale(1.05);
+  transition: linear 0.1s;
+  transform: scale(1.1);
 }
 
-/* Contador de itens do carrinho */
-.cart p {
-  position: absolute;
-  top: 0px;
-  right: 1.5rem;
-  display: inline-block;
-  background-color: var(--secondary-blue);
-  border: 1px solid var(--primary);
-  margin: 0;
-  padding: 0.5rem;
-  text-align: center;
-  border-radius: 3rem;
-  color: var(--primary);
-  font-size: 1.5rem;
+.cartIcon {
   height: 3rem;
-  width: 3rem;
-  font-weight: bold;
-  z-index: 2;
-}
-
-/* Valor total do carrinho */
-.cart h5 {
-  background-color: var(--secondary-blue);
-  border: 1px solid var(--primary);
-  text-align: center;
-  border-radius: 3rem;
-  color: var(--primary);
-  font-size: 1.5rem;
-  padding: 0.5rem;
-}
-
-/* Login e popup do usuário */
-.login {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-right: 20px;
-}
-
-.userPopup {
-  position: absolute;
-  top: 6.5rem;
-  left: -2.5rem;
   width: auto;
-  gap: 2rem;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 1.5rem 2rem;
-  background-color: var(--gray-800);
-  color: var(--gray-300);
-  border-radius: 1.5rem;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
+  text-decoration: none;
+  color: var(--primary-dark);
 }
 
-.userInfo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 1.3rem !important;
-}
-
-.userPopup p {
-  margin: 0;
-  font-weight: bold;
-}
-.userPopup button {
-  background-color: #4078c0;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.userPopup button:hover {
-  background-color: #305a8c;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .header {
-    flex-direction: row;
-    height: auto;
-    padding: 2rem 1rem;
-  }
-  .title {
-    font-size: 3rem;
-    margin-left: 0;
-    padding: 0.5rem;
-  }
-  .header svg {
-    width: 4rem;
-    height: 4rem;
-    font-size: 8rem;
-  }
-  .cart {
-    font-size: 2rem;
-    padding: 0.5rem;
-  }
-  .cart p {
-    font-size: 1rem;
-    height: 2rem;
-    width: 2rem;
-    top: -1rem;
-    right: -1rem;
-  }
-  .cartIcon h5 {
-    font-size: 1rem;
-    height: 1.5rem;
-    padding: 0.3rem 0.7rem;
-  }
-  .userPopup {
-    top: 5rem;
-    padding: 1rem;
-  }
-  .iconPop {
-    width: 35px;
-    height: 35px;
-  }
-}
-
-.confirmButton {
-  background-color: rgb(200, 35, 51) !important;
-  color: white !important;
-  font-weight: bolder !important;
-  font-family: "Roboto", "Segoe UI", sans-serif;
-  border: none;
-  padding: 1rem;
-  border-radius: 2rem !important;
-  cursor: pointer;
-  font-size: 1.3rem;
-}
-
-.confirmButton:hover {
-  background-color: rgb(150, 25, 41) !important;
+.cartTotal {
+  position: relative;
+  right: 0.7rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--primary-contrast);
+  font-family: "Roboto Mono", "Fira Mono", "IBM Plex Mono", monospace;
+  background-color: var(--primary);
+  border-radius: 2rem;
+  padding: 0.1rem 0.8rem;
 }

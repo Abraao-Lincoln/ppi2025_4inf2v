@@ -1,6 +1,6 @@
 import styles from "./Cart.module.css";
 import { useState, useContext } from "react";
-import { CartContext } from "../service/CartContext";
+import { CartContext } from "../context/CartContext";
 
 export function Cart() {
   const { uniqueProducts, cart, removeFromCart, addToCart } = useContext(CartContext);

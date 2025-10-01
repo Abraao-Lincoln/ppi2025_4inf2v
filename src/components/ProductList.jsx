@@ -2,11 +2,11 @@ import styles from "./ProductList.module.css";
 import { Product } from "./Product.jsx";
 import { CircularProgress } from "@mui/material";
 import { useContext, useRef, useState, useEffect } from "react";
-import { CartContext } from "../service/CartContext";
+import { CartContext } from "../context/CartContext";
 
 export function ProductList() {
   const { products, loading, error } = useContext(CartContext);
-  
+
   const searchInput = useRef(null);
   var [filteredProducts, setFilteredProducts] = useState(products);
 
@@ -16,45 +16,54 @@ export function ProductList() {
 
   return (
     <div className={styles.container}>
-       <div className= {styles.main}>
-        <div className= {styles.search}>
-          <input 
+      <div className={styles.search}>
+        <input
+          className={styles.searchInput}
           type="text"
           ref={searchInput}
           placeholder="Search products..."
           onChange={() => {
             const query = searchInput.current.value.toLowerCase();
-            filteredProducts = products.filter(product =>
-              product.title.toLowerCase().includes(query) || 
-              product.description.toLowerCase().includes(query)
+            filteredProducts = products.filter(
+              (product) =>
+                product.title.toLowerCase().includes(query) ||
+                product.description.toLowerCase().includes(query)
             );
             setFilteredProducts(filteredProducts);
           }}
-          />
-          <button onClick={() => {
+        />
+        <button
+          className={styles.clearButton}
+          onClick={() => {
             searchInput.current.value = "";
             setFilteredProducts(products);
-          }}>Clear</button>
-        </div>
-       {filteredProducts.map((product) => (
-      <Product key={product.id} product={product}/>
-        
-        ))}
-        </div>
-         {loading && (
+          }}
+        >
+          Clear
+        </button>
+      </div>
+      <div className={styles.productList}>
         <div>
-          <CircularProgress
-            // size="sm"
-            thickness={5}
-            style={{ margin: "2rem auto", display: "block" }}
-            sx={{
-              color: "#001111",
-            }}
-          />
-          <p>Loading products...</p>
+          {filteredProducts.map((product) => (
+            <Product key={product.id} product={product} />
+          ))}
         </div>
-      )}
-      {error && <p>Error loading products: {error.message}</p>}
+
+        {loading && (
+          <div>
+            <CircularProgress
+              // size="sm"
+              thickness={5}
+              style={{ margin: "2rem auto", display: "block" }}
+              sx={{
+                color: "#001111",
+              }}
+            />
+            <p>Loading products...</p>
+          </div>
+        )}
+        {error && <p>Error loading products: {error.message}</p>}
+      </div>
     </div>
   );
 }

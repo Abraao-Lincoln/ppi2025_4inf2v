@@ -1,6 +1,6 @@
 // ManageProducts.jsx
 import { useContext, useState, useEffect } from "react";
-import { CartContext } from "../service/CartContext";
+import { CartContext } from "../context/CartContext";
 import styles from "./ManageProducts.module.css";
 
 export function ManageProducts() {

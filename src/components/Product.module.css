@@ -1,9 +1,9 @@
 .productCard {
-  border: 1px solid rgb(32, 59, 156);
+  border: 1px solid var(--primary);
   border-radius: 8px;
   padding: 16px;
   text-align: center;
-  background-color: rgb(17, 31, 80);
+  background-color: var(--background);
   width: 40rem;
 }
 
@@ -16,23 +16,24 @@
   font-size: 3rem;
   font-weight: bold;
   margin: 8px 0;
+  color: var(--text);
 }
 
 .productDescription {
   font-size: 1rem;
-  color: rgb(37, 100, 234);
+  color: var(--accent);
 }
 
 .productPrice {
   font-size: 2rem;
-  color: rgb(37, 100, 234);
+  color: var(--accent);
   font-weight: bold;
   margin: 8px 0;
 }
 
 .productButton {
-  background-color: rgb(23, 54, 121);
-  color: rgb(37, 100, 234);
+  background-color: var(--primary);
+  color: var(--accent);
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
@@ -41,7 +42,7 @@
 }
 
 .productButton:hover {
-  background-color: rgb(17, 59, 151);
+  background-color: var(--primary-hover);
 }
 
 .productQty {
@@ -53,9 +54,8 @@
   border: none;
 }
 .productQty button {
-    
-  background-color: rgb(23, 54, 121);
-  color: rgb(37, 100, 234);
+  background-color: var(--primary);
+  color: var(--accent);
   border: none;
   padding: 4px 8px;
   border-radius: 4px;
@@ -64,13 +64,13 @@
 }
 
 .productQty button:hover {
-  background-color: rgb(17, 59, 151);
+  background-color: var(--primary-hover);
 }
 
 .modal {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.5);
+  background: var(--modal-overlay);
   backdrop-filter: blur(8px);
   display: flex; align-items: center; justify-content: center;
   z-index: 2000;
@@ -81,42 +81,40 @@
   justify-content: center;
   align-items: center;
   gap: 4rem;
-  background-color: var(--gray-900);
+  background-color: var(--modal-background);
   padding: 2rem;
   border-radius: 2rem;
   position: relative;
   min-width: 250px;
   max-width: 90vw;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
-  color: var(--gray-400);
+  box-shadow: 0 2px 16px var(--shadow);
+  color: var(--modal-text);
 }
 
 .modalContent h2 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--gray-400);
+  color: var(--modal-text);
 }
 
 .modalContent p {
   font-size: 2rem;
-  color: var(--gray-300);
+  color: var(--modal-subtext);
 }
 
 .confirmButton {
-  background-color: var(--gray-700) !important;
-  color: white !important;
+  background-color: var(--button-background) !important;
+  color: var(--button-text) !important;
   font-weight: bolder !important;
   font-family: 'Roboto', 'Segoe UI', sans-serif;
   border: none;
-  padding: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 1rem 2rem;
   border-radius: 2rem;
   cursor: pointer;
   font-size: 2rem;
 }
 
 .confirmButton:hover {
-  background-color: var(--gray-500) !important;
+  background-color: var(--button-hover) !important;
   scale: 1.05;
 }

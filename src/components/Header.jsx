@@ -2,61 +2,67 @@ import styles from "./Header.module.css";
 import { ShoppingCart, CircleUserRound } from "lucide-react";
 import { Link } from "react-router";
 import { useContext, useState } from "react";
-import { CartContext } from "../service/CartContext";
+import { CartContext } from "../context/CartContext";
+import { Separator } from "@base-ui-components/react/separator";
+import { Badge } from "@mui/material";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
-  const { cart, uniqueProducts } = useContext(CartContext);
-  const [showPopup, setShowPopup] = useState(false);
-  
+  const { cart, uniqueProducts, session } = useContext(CartContext);
+  const username = session?.user?.user_metadata?.username;
 
   return (
     <header className={styles.header}>
-      <div
-        className={styles.login}
-        onMouseEnter={() => setShowPopup(true)}
-        onMouseLeave={() => setShowPopup(false)}
-        style={{ position: "relative" }}
-      >
-        <CircleUserRound size={50} color="var(--primary)" />
-        {name}
+      <div className={styles.username}>Welcome {username}!</div>
 
-        {showPopup && (
-          <div className={styles.userPopup}>
-            <div className={styles.userInfo}>
-              <CircleUserRound size={18} />
-              <p>{username || "Usuário"}</p>
-            </div>
-            <Link to="/manage-products">
-              <button>Gerenciar Produtos</button>
-            </Link>
-            <Link to="/login">
-              <button className={styles.confirmButton}>Sair</button>
-            </Link>
-          </div>
-        )}
-      </div>
       <div>
         <Link to="/" className={styles.title}>
           TECHNOSTORE
         </Link>
       </div>
 
-      <div className={styles.cart}>
-        <Link to="/cart">
-          <ShoppingCart className={styles.cartIcon} />
-        </Link>
-        {cart.length > 0 && <p>{cart.length}</p>}
+      {/* Login / Sign up Area */}
+      <div className={styles.loginArea}>
+        <a href="/signin">Log in</a>
 
-        {cart.length > 0 && (
-          <h5>
-            {uniqueProducts
-              .reduce(
-                (total, product) => total + product.price * product.qty,
-                0
-              )
-              .toFixed(2)}
-          </h5>
-        )}
+        <Separator orientation="vertical" className={styles.Separator} />
+
+        <a href="/register">Sign up</a>
+      </div>
+
+      <div className={styles.themeToggle}>
+        <ThemeToggle />
+      </div>
+
+      <div className={styles.cart}>
+        {/* Shopping Cart */}
+        <Link to="/cart">
+          <Badge
+            badgeContent={cart.length}
+            sx={{
+              "& .MuiBadge-badge": {
+                backgroundColor: "var(--primary)",
+                color: "var(--primary-contrast)",
+                fontSize: "1rem",
+              },
+            }}
+          >
+            <ShoppingCart className={styles.cartIcon} />
+          </Badge>
+        </Link>
+        {/* Total Value */}
+        <div className={styles.cartTotal}>
+          {cart.length > 0 && (
+            <h5>
+              {uniqueProducts
+                ?.reduce(
+                  (total, product) => total + product.price * product.qty,
+                  0
+                )
+                .toFixed(2)}
+            </h5>
+          )}
+        </div>
       </div>
     </header>
   );

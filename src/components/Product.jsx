@@ -1,7 +1,8 @@
 import styles from "./Product.module.css";
 import { useState } from "react";
 import { useContext } from "react";
-import { CartContext } from "../service/CartContext";
+import { CartContext } from "../context/CartContext";
+import { toast, Bounce } from "react-toastify";
 
 export function Product({ product }) {
   const { addToCart } = useContext(CartContext);
@@ -12,20 +13,6 @@ export function Product({ product }) {
     addToCart(product);
     setShowModal(true);
   }
-
-  function closeModal() {
-    setShowModal(false);
-    setModalProduct(null);
-  }
-
-  // function confirmRemove() {
-  //   if (modalProduct) {
-  //     for (let i = 0; i < modalProduct.qty; i++) {
-  //       removeFromCart(modalProduct);
-  //     }
-  //     closeModal();
-  //   }
-  // }
 
   return (
     <div className={styles.productCard}>
@@ -49,27 +36,22 @@ export function Product({ product }) {
         className={styles.productButton}
         onClick={() => {
           handleAdd(product);
+          toast.success("Product added to the cart", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+            style: { fontSize: "1.5rem" },
+          });
         }}
       >
         ADD TO CART
       </button>
-      {/* Modal */}
-      {showModal && (
-        <div className={styles.modal} onClick={closeModal}>
-          <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2>Produto adicionado com sucesso</h2>
-            <p>
-              <strong>{product.title}</strong> adicionado ao carrinho!
-            </p>
-            <button className={styles.confirmButton} onClick={closeModal}>
-              Ok
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
